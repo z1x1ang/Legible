@@ -28,10 +28,10 @@ function getCoordinates(n) {
 //softmax规范化，将数值转换成概率
 //cost智能体的行动成本 minCost到真实目标g1的最优成本，minCost到真实目标g2的最优成本
 function updateProbability(cost,minCost,minCost2){
-let f2=Math.exp(-cost-minCost)*probability_g1/8+Math.exp(-cost-minCost2)*probability_g2/7;
+let f2=Math.exp(-cost-minCost)*probability_g1/Math.exp(-8)+Math.exp(-cost-minCost2)*probability_g2/Math.exp(-7);
 //计算去每个目标的概率
-probability_g1=Math.exp(-cost-minCost)*probability_g1/8;
-probability_g2=Math.exp(-cost-minCost2)*probability_g2/7;
+probability_g1=Math.exp(-cost-minCost)*probability_g1/Math.exp(-8);
+probability_g2=Math.exp(-cost-minCost2)*probability_g2/Math.exp(-7);
 console.log(probability_g1);
 console.log(probability_g2);
 //归一化 
@@ -42,7 +42,7 @@ document.getElementById("pg1").innerText=probability_g1;
 document.getElementById("pg2").innerText=probability_g2;
 //计算可读性 分子
 legiable_f1+=probability_g1*(8-cost);
-//36等于总的时间步长8+7+...+1=36
+//36等于总的时间步长12+11+8+7+...+1=78
 let legiable=legiable_f1/36;
 //更新GUI
 document.getElementById("legibleValue").innerText=legiable;
@@ -73,7 +73,7 @@ function step(q_table){
     let currentIndex = Array.from(env.gridItems).findIndex(item => item.contains(env.newDiv));
     let max=Math.max(...q_table[currentIndex]);
     //假设按这个路径走
-    let indices=[3,3,0,0,0,0,0,0];
+    let indices=[0,0,0,0,0,0,3,3];
     // q_table[currentIndex].forEach((value,index)=>{
     //     if(max==value){indices.push(index);}
     // })
