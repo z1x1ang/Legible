@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-06-09T01:51:15.500Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" etag="Kls8CPy39Iu6yl25UhDG" version="24.5.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-06-09T01:53:58.777Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" etag="izqDG3nT1uCGIGkkDTo_" version="24.5.2" type="github">
   <diagram name="Page-1" id="Tng0Qn3YpHnoi7B1LfiO">
     <mxGraphModel dx="1113" dy="1928" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -103,7 +103,7 @@
         <mxCell id="Mq51wtrZQnI-2KQaDJIJ-1" value="C成本:用曼哈顿距离表示 具体计算&lt;span style=&quot;text-align: center; text-wrap: wrap; background-color: initial;&quot;&gt;P(G1|&lt;/span&gt;&lt;span style=&quot;text-wrap: wrap; background-color: rgb(247, 247, 247); color: rgb(17, 17, 17); font-family: -apple-system, Roboto, SegoeUI, &amp;quot;Segoe UI&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, &amp;quot;Microsoft YaHei&amp;quot;, &amp;quot;Meiryo UI&amp;quot;, Meiryo, &amp;quot;Arial Unicode MS&amp;quot;, sans-serif; font-size: 16px;&quot;&gt;ξ&lt;/span&gt;&lt;span style=&quot;text-align: center; text-wrap: wrap; background-color: initial;&quot;&gt;)如下：&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;exp(-起点S到St的成本-St到目标G的最优成本)*P(G)/exp(-起点到终点的最优成本)&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="598.98" y="334.99999999999994" width="450" height="50" as="geometry" />
         </mxCell>
-        <UserObject label="&lt;div&gt;具体计算过程实例：&lt;/div&gt;&lt;a href=&quot;https://raw.githubusercontent.com/z1x1ang/Legible/master/%E5%8F%AF%E8%AF%BB%E6%80%A7%E5%85%AC%E5%BC%8F%E8%AE%A1%E7%AE%97%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B.jpg&quot;&gt;可读性公式计算详细过程.jpg (5414×1563) (raw.githubusercontent.com)&lt;/a&gt;" linkTarget="_blank" id="AEpK5ua4FTJ1j22TAgrp-2">
+        <UserObject label="&lt;div&gt;具体计算实例：&lt;/div&gt;&lt;a href=&quot;https://raw.githubusercontent.com/z1x1ang/Legible/master/%E5%8F%AF%E8%AF%BB%E6%80%A7%E5%85%AC%E5%BC%8F%E8%AE%A1%E7%AE%97%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B.jpg&quot;&gt;可读性公式计算详细过程.jpg (5414×1563) (raw.githubusercontent.com)&lt;/a&gt;" linkTarget="_blank" id="AEpK5ua4FTJ1j22TAgrp-2">
           <mxCell style="text;html=1;whiteSpace=wrap;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
             <mxGeometry x="760" y="40" width="410" height="30" as="geometry" />
           </mxCell>
