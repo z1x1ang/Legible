@@ -142,7 +142,6 @@ async function update(){
         //定义智能体是否到达目标
         let done=false;
         let done2=false;
-        let agent2ToGoal=false;
 
         while(true){
             let action,action2;
