@@ -18,6 +18,8 @@ reset(){
    this.gridItems[50].appendChild(this.agent2Div);
    //重置visited数组全为0
    this.visited.fill(false);
+   //还原伪元素的标志
+   document.querySelector('.q-observer').classList.remove('new-style');
    //返回起点位置
    return {observation:56,observation2:50};
 }

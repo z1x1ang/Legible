@@ -122,7 +122,7 @@ class ObserverRL extends RL {
         goal=goal?1:0;
         const qPredict=this.q_table[s][this.actions.indexOf(a)][goal];
         //根据智能体1的goal判断智能体2是几号目标
-        let stringGoal=goal?'4':'9';
+        let stringGoal=goal?'9':'4';
         const qTarget=s_.split(',')[1]!==stringGoal?
             r + this.gamma * Math.max(...Object.values(this.q_table[s_].map(actionValues => actionValues[goal]))) :
             r;

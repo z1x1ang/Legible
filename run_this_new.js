@@ -1,6 +1,5 @@
 import Maze from './Maze.js'
 import { QLearningTable,ObserverRL} from './RL_brain.js';
-
 //改g1 rewardshaping 1改 Maze oval_pos二改 s_=9三改 delete四改
 let METHOD;
 //拿到页面设计端元素
@@ -24,6 +23,7 @@ function getCoordinates(n) {
 
 //softmax规范化，将数值转换成概率
 //cost智能体的行动成本 minCost到真实目标g1的最优成本，minCost到真实目标g2的最优成本
+//若要修改可读性轨迹训练过的智能体，则这个代码也需修改，使其可处理不同目标~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function updateProbability(cost,minCost,minCost2){ 
 let f2=Math.exp(-cost-minCost)*0.5/Math.exp(-8)+Math.exp(-cost-minCost2)*0.5/Math.exp(-7);
 //计算去每个目标的概率
@@ -119,8 +119,7 @@ function step(s_){
 async function update(){
     //let goal=Math.ceil(Math.random()*2);
     //设置智能体1的目标 0代表黄色目标
-    let goal=0;
-    if(goal==0){
+    if(agent1Goal==0){
         RL.q_table['terminal']=RL.q_table[4];
         delete RL.q_table[4];
     }
@@ -149,7 +148,7 @@ async function update(){
                 if(isNaN(probability_g1)) console.log("e是"+episode+"c是"+c);
                 }
                 reward=reward+probability_g1*0.16;
-                RL.learn(observation,action,reward,observation_,goal)
+                RL.learn(observation,action,reward,observation_,agent1Goal)
                 //改变状态和行为
                 observation=observation_; 
                 //observation2=observation2_;
@@ -169,11 +168,11 @@ async function update(){
 
 //console.log(agent1States);
     //训练智能体2
-    for(let episode=0;episode<240;episode++){
+    for(let episode=0;episode<120;episode++){
         //随机初始化一个目标
         //goal=Math.floor(Math.random() * 2);
         //初始化智能体1的装态
-        let {observation2}=env.reset()
+        let {observation2}=env.reset() 
         let c=0;
         let tmp_policy={}
         while(true){
@@ -184,7 +183,7 @@ async function update(){
             let {s_:observation2_,reward:reward2,done:done2,oval_flag:oval_flag2}=env.step(action2,env.agent2Div);
             //根据当前变化更新Q
              /*注意，agent1States=[56, 57, 58, 49, 50, 41, 32, 33, 24, 15, 6, 5, 4] 12*/
-            RL2.learn(`${4},${observation2}`,action2,reward2, `${4},${observation2_}`,!goal);
+            RL2.learn(`${4},${observation2}`,action2,reward2, `${4},${observation2_}`,agent2Goal);
             //改变状态和行为
             //observation=observation_;
             observation2=observation2_;
@@ -199,8 +198,8 @@ async function update(){
              }
         }
     }
-    console.log(RL2.q_table);
-    get_policy2(RL2.q_table);
+    //console.log(RL2.q_table);
+    //get_policy(RL.q_table);
     //env.reset();
     console.log("120局游戏结束");
     //输出最终Q表
@@ -211,6 +210,7 @@ async function update(){
     //test(q_table_result);
     //policy?console.log("最优策略已收敛:",policy):console.log("最优策略未收敛");
     //console.table(q_table_result);
+    env.reset();
 }
 //收完整值
 //定义nengdan函数，调用时，接受(状态两个状态，返回第二个智能体所能做的最优动作)
@@ -268,7 +268,6 @@ async function test(q_table,agentDiv){
         //从最大值索引中随机选择一个
         const randomIndex = maxIndexes[Math.floor(Math.random() * maxIndexes.length)];
         action=randomIndex;
-            
         }
         if(action==0){
             childDiv.style.top = '-54.5%';
@@ -358,7 +357,10 @@ function main() {
     }
     else if(METHOD==='Q-Learning'){
         window.RL=new QLearningTable(env.action_space);
-        window.RL2=new ObserverRL(env.action_space)
+        window.RL2=new ObserverRL(env.action_space);
+        //定义一些与目标相关的全局变量，以供其他js文件访问
+        window.agent1Goal=0;
+        window.agent2Goal=1;
     }
     // 启动更新过程
     update();
